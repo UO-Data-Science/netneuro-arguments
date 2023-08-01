@@ -1,25 +1,24 @@
 # Using Arguments
 
-As a reminder from our first [lecture](https://github.com/UO-Data-Science/NetNeuro2023/raw/main/docs/slides/Good_Data_Practices.pptx). It is good practice to avoid hard coding things that only use can use into your scripts. For example paths to files like 
+As a reminder from our first [lecture](https://github.com/UO-Data-Science/NetNeuro2023/raw/main/docs/slides/Good_Data_Practices.pptx). It is good practice to avoid hard coding things that only you can use into your scripts. For example paths to files like 
 ```python
 df=pd.read_csv("C:/Jakes/random/folder/data.csv")
 ```
 or in R
-```
+```R
 df<-read_csv("C:/Jakes/random/folder/data.csv")
 ```
-Why? Because anyone else who want to use your code will have to open up a file and re-write this code to work for them. This can be error prone, particularly, when you're trying to understand when why you got a result because you can't trust that the file that currently in your script is the one the code was run on because it changes regularly in your worflow. As a side note having people change code as part of a workflow also makes version control messy because every person contributing will have a different value for that line. So what are some solutions.
+Why? Because anyone else who wants to use your code will have to open up a file and re-write this code for it to work for them. This can be error prone, and makes it difficult understand why you got a result, because you can't trust that the file currently on your computer is the you ran because it changes regularly in your worflow. As a side note having people change code as part of a workflow also makes version control messy because every person contributing will have a different value for that line. So what are some solutions.
 
 ## File organization
 * orgainize code into packages and use relative paths (for more on paths see [here](https://datacarpentry.org/shell-economics/02-the-filesystem/index.html))
-in this workflow everyone sets up there package like this, and puts there data in the same place 'mydata.csv'. This is normally good enough if you agree to also run the script with your package directory as your working directory. (Note this isn't good enough if you want to run in other directories)
+in this workflow everyone sets up there package like this, and puts there data in the same place `mydata.csv`. This is normally good enough if you agree to also run the script with your package directory as your working directory. (Note this isn't good enough if you want to run in other directories)
 ```
 ├── my_package
-├── my_analysis.R
-├── my_analysis.py
-
-│   ├── data
-│   │   ├── mydata.csv
+│ ├── my_analysis.R
+│ ├── my_analysis.py
+│ ├── data
+│ │ ├── mydata.csv
 
 ```
 
@@ -27,12 +26,12 @@ in this workflow everyone sets up there package like this, and puts there data i
 df=pd.read_csv("./data/mydata.csv")
 ```
 or in R
-```
 
+```R
 df<-read_csv("./data/mydata.csv")
 ```
 
- * In some cases when everyone can use the same disks you can use a path everyone has access to
+ ### In some cases when everyone can use the same disks you can use a path everyone has access to
 ```python
 df=pd.read_csv("/path/everyone/can_use.csv")
 ```
@@ -133,9 +132,9 @@ python  py_opt_test.py -f 'test.csv' -o 'output.csv'
 ```
 
 ### Tips
-* Using arguments with and IDE like RStudio or Spyder can be a little tricky. When you run the script in your IDE it needs to know what arguments to run with, which isn't always an option you can set. When a script is run without arguments it defaults to the value set in the `default= value` part of the option creation. You can use this to set point to your own files while developing your code, and either clear them or keep them when you share it. Just remember if you're using version control not everyone can set there own default without runing into conflicts. 
+* Using arguments with and IDE like RStudio or Spyder can be a little tricky. When you run the script in your IDE it needs to know what arguments to run with, which isn't always an option you can set. When a script is run without arguments it defaults to the value set in the `default= value` part of the option creation. You can set this function argument to point to your own files while developing your code, and either clear them or keep them when you share it. Just remember if you're using version control not everyone can set there own default without runing into conflicts. 
 
-* Save a log with values of your arguments along with your scripts results, so you can re-create what you did in the past.
+* Save a log with values of your arguments along with your script's results, so you can re-create what you did in the past.
 
 ## Use a Config file
 
@@ -149,11 +148,11 @@ Another option is to read in all your options from a file. There are a bunch of 
 4) Consider passing the path of your config file as a command line argument, so you can run with many different config's easily. 
 
 Here are a few things to get you started if you want to learn more about reading and writing the above file types.
-* Configr package (many file types) [\[Link\]]https://cran.r-project.org/web/packages/configr/readme/README.html
+* Configr package (many file types) [\[Link\]](https://cran.r-project.org/web/packages/configr/readme/README.html)
 * Config package in R (YAML) [\[Link\]](https://cran.r-project.org/web/packages/config/vignettes/introduction.html)
 * Using YAML for python configuration [\[Link\]](https://betterdatascience.com/python-yaml-configuration-files/)
 * Using JSON for python configuration [\[Link\]](https://betterdatascience.com/python-json-configuration-file/)
 
-
+## Give it a try with one of your scripts and ask slack if you run into trouble
 
 
