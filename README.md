@@ -8,10 +8,10 @@ or in R
 ```R
 df<-read_csv("C:/Jakes/random/folder/data.csv")
 ```
-Why? Because anyone else who wants to use your code will have to open up a file and re-write this code for it to work for them. This can be error prone, and makes it difficult understand why you got a result, because you can't trust that the file currently on your computer is the you ran because it changes regularly in your worflow. As a side note having people change code as part of a workflow also makes version control messy because every person contributing will have a different value for that line. So what are some solutions.
+Why? Because anyone else who wants to use your code will have to open up a file and re-write this code for it to work for them. This can be error prone, and makes it difficult understand why you got a result, because you can't trust that the file currently on your computer is the one you ran because it changes regularly in your workflow. As a side note having people change code as part of a workflow also makes version control messy because every person contributing will have a different value for that line. So what are some solutions.
 
 ## File organization
-* orgainize code into packages and use relative paths (for more on paths see [here](https://datacarpentry.org/shell-economics/02-the-filesystem/index.html))
+* organize code into packages and use relative paths (for more on paths see [here](https://datacarpentry.org/shell-economics/02-the-filesystem/index.html))
 in this workflow everyone sets up there package like this, and puts there data in the same place `mydata.csv`. This is normally good enough if you agree to also run the script with your package directory as your working directory. (Note this isn't good enough if you want to run in other directories)
 ```
 ├── my_package
@@ -35,19 +35,17 @@ df<-read_csv("./data/mydata.csv")
 ```python
 df=pd.read_csv("/path/everyone/can_use.csv")
 ```
-this is easy, but only works for people on your team that can access that data and won't work if you want to share your code elsewhere
+this is easy, but only works for people on your team that can access that data (for example you're all working Talapas) and it won't work if you want to share your code elsewhere.
 
 ## Use Command Line Arguments
 
-Another way is to set values using command line arguments. It's important to note that this generally means you'll be running your script on the command line for example in a terminal you would run/
+Another way is to set values using command line arguments. It's important to note that this generally means you'll be running your script on the command line for example in a terminal you would run:
 
-### Using R
-
-``` Rscript 01-my_script.R --inpufile="./my_data.csv" ``` 
+```R Rscript 01-my_script.R --inpufile="./my_data.csv" ``` 
 
 or in python
 
-``` python my_script.py --inpufile="./my_data.csv" ``` 
+```python python my_script.py --inpufile="./my_data.csv" ``` 
 
 There are several ways to use these variables in your code, but it won't work without some changes. You'll need a package to parse the arguments you pass to your script. For example in R
 
@@ -132,7 +130,7 @@ python  py_opt_test.py -f 'test.csv' -o 'output.csv'
 ```
 
 ### Tips
-* Using arguments with and IDE like RStudio or Spyder can be a little tricky. When you run the script in your IDE it needs to know what arguments to run with, which isn't always an option you can set. When a script is run without arguments it defaults to the value set in the `default= value` part of the option creation. You can set this function argument to point to your own files while developing your code, and either clear them or keep them when you share it. Just remember if you're using version control not everyone can set there own default without runing into conflicts. 
+* Using arguments with and IDE like RStudio or Spyder can be a little tricky. When you run the script in your IDE it needs to know what arguments to run with, which isn't always an option you can set. When a script is run without arguments it defaults to the value set in the `default= value` part of the option creation. You can set this function argument to point to your own files while developing your code, and either clear them or keep them when you share it. Just remember if you're using version control not everyone can set there own default without running into conflicts. 
 
 * Save a log with values of your arguments along with your script's results, so you can re-create what you did in the past.
 
